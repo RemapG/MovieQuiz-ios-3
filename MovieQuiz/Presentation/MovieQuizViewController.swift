@@ -2,25 +2,11 @@ import UIKit
 
 final class MovieQuizViewController: UIViewController {
     // MARK: - Lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let currentQuestion = questions[currentQuestionIndex]
-        
-        let firtstQuestion = convert(model: currentQuestion)
-        
-        show(quiz: firtstQuestion)
-       
-        
-        
-        
-    }
-    
     @IBOutlet private var counterLabel: UILabel!
     @IBOutlet private var imageView: UIImageView!
     @IBOutlet private var textLabel: UILabel!
-    @IBOutlet weak var yesButton: UIButton!
-    @IBOutlet weak var noButton: UIButton!
+    @IBOutlet private weak var yesButton: UIButton!
+    @IBOutlet private weak var noButton: UIButton!
     
     private var currentQuestionIndex = 0
     
@@ -83,6 +69,18 @@ final class MovieQuizViewController: UIViewController {
                      correctAnswer: false),
         
     ]
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let currentQuestion = questions[currentQuestionIndex]
+        
+        let firtstQuestion = convert(model: currentQuestion)
+        
+        show(quiz: firtstQuestion)
+       
+        }
+    
+  
     // Функция конпки Нет
     @IBAction private func yesButtonClicked(_ sender: UIButton) {
         let currentQuestion = questions[currentQuestionIndex]
@@ -90,6 +88,7 @@ final class MovieQuizViewController: UIViewController {
         
         showAnswerResult(isCorrect: givenAnswer == currentQuestion.correctAnswer)
         yesButton.isEnabled = false
+        noButton.isEnabled = false
     }
     // Функция конпки Нет
     @IBAction private func noBottonClicked(_ sender:
@@ -99,6 +98,7 @@ final class MovieQuizViewController: UIViewController {
         
         showAnswerResult(isCorrect: givenAnswer == currentQuestion.correctAnswer)
         noButton.isEnabled = false
+        yesButton.isEnabled = false
     }
     
     private func showAnswerResult(isCorrect: Bool) {
