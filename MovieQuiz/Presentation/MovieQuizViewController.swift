@@ -97,6 +97,9 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
                                                  text: text,
                                                  buttonText: "Сыграть еще раз")
             endAlert(quiz: viewModel)
+            yesButton.isEnabled = true
+            noButton.isEnabled = true
+
           
         } else {
            
@@ -122,7 +125,8 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
             self.currentQuestionIndex = 0
             self.correctAnswers = 0
         
-            
+            self.questionFactory = QuestionFactory(delegate: self)
+            self.questionFactory?.requestNextQuestion()
 //            self.show(quiz: self.convert(model: self.questions[self.currentQuestionIndex]) )
         }
         
