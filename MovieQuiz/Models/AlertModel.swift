@@ -15,7 +15,7 @@ struct AlertModel {
     let title:String
     let masage: String
     let buttonText: String
-    var completion:((UIAlertAction) -> ())?
+    var completion:((UIAlertAction) -> ())? 
     
     
     
