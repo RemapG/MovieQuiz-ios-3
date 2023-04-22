@@ -9,14 +9,15 @@ import Foundation
 import UIKit
 
 
+
 struct AlertModel {
     
-    var title: String
-    var masage: String
-    var buttonText: String
+    let title:String
+    let masage: String
+    let buttonText: String
+    var completion:((UIAlertAction) -> ())?
     
-//    let action = UIAlertAction(title: , style: .default) { _ in
-//
-//    }
-    }
-
+    
+    
+    
+}

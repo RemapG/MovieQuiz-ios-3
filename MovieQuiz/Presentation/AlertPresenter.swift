@@ -9,20 +9,24 @@ import Foundation
 import UIKit
 
 
-private func endAlert(quiz result: AlertModel) {
-    let alert = UIAlertController(
-        title: result.title,
-        message: result.masage,
-        preferredStyle: .alert)
+class AlertPresenter{
     
-    let action = UIAlertAction(title: result.buttonText, style: .default) { [weak self] _ in
-        guard let self = self else { return }
-        self.currentQuestionIndex = 0
-        self.correctAnswers = 0
+    func endAlert(from viewController:UIViewController, quiz result: AlertModel) {
+        let alert = UIAlertController(
+            title: result.title,
+            message: result.masage,
+            preferredStyle: .alert)
         
-        self.questionFactory = QuestionFactory(delegate: self)
-        self.questionFactory?.requestNextQuestion()
-
+        let action = UIAlertAction(title: result.title, style: .default,handler: result.completion)
+      
+        
+        alert.addAction(action)
+        viewController.present(alert,animated: true,completion: nil)
+        
+       
+        
+            
+        }
+        
     }
-    
-}
+
